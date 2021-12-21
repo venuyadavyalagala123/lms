@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib import admin
-from . views import Home,book_list,book_create
+from . views import Home,CrudView,CreateCrudUser,UpdateCrudUser,DeleteCrudUser
 
 
 
@@ -24,7 +24,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home', Home.as_view(), name='home'),
     path('', include('accounts.urls')),
-    path('book/',book_list, name='book_list'),
-    path('createbook/',book_create, name='book_create'),
+    path('crud/', CrudView.as_view(), name='crud_ajax'),
+    path('create/',CreateCrudUser.as_view(), name='crud_ajax_create'),
+    path('update/',UpdateCrudUser.as_view(), name='crud_ajax_update'),
+    path('delete/',DeleteCrudUser.as_view(), name='crud_ajax_delete'),
+    
+    
+    
 
 ]
