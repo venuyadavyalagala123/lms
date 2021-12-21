@@ -7,8 +7,6 @@ from django.contrib.auth import logout
 
 from .forms import CustomUserCreationForm
  
-
-
 # Create your views here.
 class LoginView(View):
     def get(self, request):

@@ -13,11 +13,13 @@ from django.template.loader import render_to_string
 class Home(TemplateView):
     template_name='home/index.html'
 
+@method_decorator(login_required, name='dispatch')
 class CrudView(ListView):
     model = CrudUser
     template_name = 'home/crud.html'
     context_object_name = 'users'
 
+@method_decorator(login_required, name='dispatch')
 class CreateCrudUser(View):
     def get(self, request):
         name1 = request.GET.get('name', None)
@@ -37,6 +39,7 @@ class CreateCrudUser(View):
         }
         return JsonResponse(data)
 
+@method_decorator(login_required, name='dispatch')
 class UpdateCrudUser(View):
     def post(self, request):
         id1 = request.POST.get('id', None)
@@ -59,6 +62,7 @@ class UpdateCrudUser(View):
         }
         return JsonResponse(data)
 
+@method_decorator(login_required, name='dispatch')
 class DeleteCrudUser(View):
     def get(self, request):
         id1 = request.GET.get('id', None)
