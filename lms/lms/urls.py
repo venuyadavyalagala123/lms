@@ -22,7 +22,7 @@ from . views import Home,CrudView,CreateCrudUser,UpdateCrudUser,DeleteCrudUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home', Home.as_view(), name='home'),
+    path('', Home.as_view(), name='home'),
     path('', include('accounts.urls')),
     path('crud/', CrudView.as_view(), name='crud_ajax'),
     path('create/',CreateCrudUser.as_view(), name='crud_ajax_create'),

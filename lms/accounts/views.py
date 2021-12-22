@@ -15,12 +15,14 @@ class LoginView(View):
     def post(self, request):
         username = self.request.POST.get('username')
         password = self.request.POST.get('password')
+        next = self.request.GET.get('next')
         print(username, password)
         user = authenticate (username=username, password=password)
         if user is not None:
             if user.is_active:
                 login(request, user)
-
+                if next:
+                    return redirect(next)
                 return HttpResponseRedirect('/')
             else:
                     return HttpResponse("Inactive user.")

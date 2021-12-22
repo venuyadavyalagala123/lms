@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import ListView,TemplateView,View
 from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from accounts.models import CrudUser
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 # from accounts.forms import CustomUserCreationForm
-
-
 
 @method_decorator(login_required, name='dispatch')
 class Home(TemplateView):
